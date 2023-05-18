@@ -3,8 +3,8 @@
 # Declare variables to be passed into your templates.
 replicaCount: 1
 image:
-  repository: manjitsing664/atlasimage
-  tag: 'latest'
+  repository: dynablaster76/apache-atlas-server
+  tag: 2.3.0
   pullPolicy: IfNotPresent
 config_parameter:
   cassandra_clustername: cassandra

@@ -28,7 +28,7 @@ spec:
                     "-c",
                     "apk update;
                      apk add curl zip;
-                     zip config.zip /apache-atlas-2.1.0-SNAPSHOT/conf/solr/*;
+                     zip config.zip /apache-atlas/conf/solr/*;
                      curl -X POST --header 'Content-Type:text/xml' -d @config.zip 'http://{{ .Release.Name }}-solr-headless:8983/solr/admin/configs?action=CREATE&name=vertex_index';
                      curl -X POST --header 'Content-Type:text/xml' -d @config.zip 'http://{{ .Release.Name }}-solr-headless:8983/solr/admin/configs?action=CREATE&name=edge_index';
                      curl -X POST --header 'Content-Type:text/xml' -d @config.zip 'http://{{ .Release.Name }}-solr-headless:8983/solr/admin/configs?action=CREATE&name=fulltext_index';"
@@ -41,8 +41,8 @@ spec:
           command: [
                     "/bin/bash",
                     "-c",
-                    "/apache-atlas-2.1.0-SNAPSHOT/bin/atlas_start.py;
-                      tail -f /apache-atlas-2.1.0-SNAPSHOT/logs/*.log;"
+                    "/apache-atlas/bin/atlas_start.py;
+                      tail -f /apache-atlas/logs/*.log;"
                     ]
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
@@ -56,7 +56,7 @@ spec:
     {{- end }}
           volumeMounts:
           - name: atlas-config
-            mountPath: /apache-atlas-2.1.0-SNAPSHOT/conf/atlas-application.properties
+            mountPath: /apache-atlas/conf/atlas-application.properties
             subPath: atlas-application.properties            
       volumes:
       - name: atlas-config

@@ -23,10 +23,10 @@ data:
 
     atlas.graph.index.search.max-result-set-size=150
 
-    atlas.notification.embedded=false
+    atlas.notification.embedded=true
     atlas.kafka.data=${sys:atlas.home}/data/kafka
-    atlas.kafka.zookeeper.connect={{ .Release.Name }}-zookeeper:2181
-    atlas.kafka.bootstrap.servers={{ .Values.kafka.url  }}
+    atlas.kafka.zookeeper.connect=localhost:9026
+    atlas.kafka.bootstrap.servers=localhost:9027
     atlas.kafka.sasl.mechanism=PLAIN
     atlas.kafka.security.protocol=SASL_SSL
     atlas.kafka.zookeeper.session.timeout.ms=400
@@ -83,9 +83,9 @@ data:
 
 
      
-    atlas.jaas.KafkaClient.loginModuleName=org.apache.kafka.common.security.plain.PlainLoginModule
-    atlas.jaas.KafkaClient.loginModuleControlFlag=required
-    atlas.jaas.KafkaClient.option.username=$ConnectionString
-    atlas.jaas.KafkaClient.option.password=Endpoint={{ .Values.kafka.connectionString  }}
-    atlas.jaas.KafkaClient.option.mechanism=PLAIN
-    atlas.jaas.KafkaClient.option.protocol=SASL_SSL
+    #atlas.jaas.KafkaClient.loginModuleName=org.apache.kafka.common.security.plain.PlainLoginModule
+    #atlas.jaas.KafkaClient.loginModuleControlFlag=required
+    #atlas.jaas.KafkaClient.option.username=$ConnectionString
+    #atlas.jaas.KafkaClient.option.password=Endpoint={{ .Values.kafka.connectionString  }}
+    #atlas.jaas.KafkaClient.option.mechanism=PLAIN
+    #atlas.jaas.KafkaClient.option.protocol=SASL_SSL
